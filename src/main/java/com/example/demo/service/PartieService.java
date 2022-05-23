@@ -13,11 +13,11 @@ public class PartieService {
     @Autowired
     private PartieRepository partieRepository;
 
-    private Optional<Partie> getPartieById(int id){
+    public Optional<Partie> getPartieById(int id){
         return partieRepository.findById(id);
     }
 
-    private Partie savePartie(Partie partie){
+    public Partie savePartie(Partie partie){
         return partieRepository.save(partie);
     }
 }

@@ -4,13 +4,17 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table
 @Getter
 @Setter
+@ToString
 public class Partie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +24,9 @@ public class Partie {
     private int nby;
     private int nbjoueur;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date debut;
+    private Timestamp debut;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fin;
+    private Timestamp fin;
 
 
 }
