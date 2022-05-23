@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 /jeu.mv.db
+jeu.trace.db
