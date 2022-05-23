@@ -1,13 +1,13 @@
-package com.morpion.api;
+package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringMorpionApplication {
+public class MorpionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringMorpionApplication.class, args);
+		SpringApplication.run(MorpionApplication.class, args);
 	}
 
 }
