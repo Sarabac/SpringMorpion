@@ -17,7 +17,7 @@ public class JoueurService {
         return joueurRepository.findById(id);
     }
 
-    public Joueur addJoueur(Joueur joueur){
+    public Joueur saveJoueur(Joueur joueur){
         return joueurRepository.save(joueur);
     }
 }

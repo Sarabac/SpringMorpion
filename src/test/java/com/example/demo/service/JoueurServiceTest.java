@@ -22,9 +22,18 @@ class JoueurServiceTest {
     void initBDTest() {
         Joueur j1 = new Joueur();
         Joueur j2 = new Joueur();
-        j1 = joueurService.addJoueur(j1);
-        System.out.println(j1.getId());
-        j2 = joueurService.addJoueur(j2);
-        System.out.println(j2.getId());
+        Joueur j3;
+        j1.setMarque('X');
+        j1 = joueurService.saveJoueur(j1);
+        assertEquals( 'X', j1.getMarque());
+        j1.setMarque('P');
+        assertEquals( 'P', j1.getMarque());
+        joueurService.saveJoueur(j1);
+
+        j2 = joueurService.saveJoueur(j2);
+        assertTrue(j2.getId()>j1.getId());
+
+        j3 = joueurService.getJoueurById(1).get();
+        assertEquals( 'P', j3.getMarque());
     }
 }
