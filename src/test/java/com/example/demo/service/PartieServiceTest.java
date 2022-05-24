@@ -5,6 +5,8 @@ import com.example.demo.repository.PartieRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -15,6 +17,8 @@ import java.time.ZoneOffset;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
+@Transactional
+@Sql(scripts = "/serviceDataTest.sql")
 class PartieServiceTest {
 
     @Autowired

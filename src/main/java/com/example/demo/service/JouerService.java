@@ -19,4 +19,8 @@ public class JouerService {
     public Jouer saveJouer(Jouer jouer){
         return jouerRepository.save(jouer);
     }
+
+    public Iterable<Jouer> getJouers(){
+        return jouerRepository.findAll();
+    }
 }

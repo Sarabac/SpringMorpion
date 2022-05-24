@@ -59,9 +59,6 @@ class JouerServiceTest {
         System.out.println(jeu1);
         System.out.println(jeu2);
     }
-    @Test
-    void getJoueursTest(){
-        joueurService.getJoueurs().forEach(System.out::println);
-    }
+
 
 }

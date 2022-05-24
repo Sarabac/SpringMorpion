@@ -4,10 +4,14 @@ import com.example.demo.model.Joueur;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
+@Sql(scripts = "/serviceDataTest.sql")
 class JoueurServiceTest {
 
     @Autowired
@@ -32,8 +36,10 @@ class JoueurServiceTest {
 
         j2 = joueurService.saveJoueur(j2);
         assertTrue(j2.getId()>j1.getId());
+    }
 
-        j3 = joueurService.getJoueurById(1).get();
-        assertEquals( "Paula", j3.getNom());
+    @Test
+    void getJoueursTest(){
+        joueurService.getJoueurs().forEach(System.out::println);
     }
 }
