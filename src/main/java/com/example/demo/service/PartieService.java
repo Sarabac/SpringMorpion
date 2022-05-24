@@ -17,6 +17,10 @@ public class PartieService {
         return partieRepository.findById(id);
     }
 
+    public Iterable<Partie> getParties(){
+        return partieRepository.findAll();
+    }
+
     public Partie savePartie(Partie partie){
         return partieRepository.save(partie);
     }
