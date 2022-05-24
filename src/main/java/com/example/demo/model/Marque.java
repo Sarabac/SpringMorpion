@@ -21,7 +21,7 @@ public class Marque {
 
     private Timestamp creation;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @Column(name = "jouer_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "jouer_id")
     private Jouer jouer;
 }
