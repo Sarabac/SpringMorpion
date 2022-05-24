@@ -2,12 +2,15 @@ package com.example.demo.service;
 
 import com.example.demo.model.Jouer;
 import com.example.demo.model.Joueur;
+import com.example.demo.model.Marque;
 import com.example.demo.model.Partie;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,6 +62,7 @@ class JouerServiceTest {
         System.out.println(jeu1);
         System.out.println(jeu2);
     }
+
 
 
 }

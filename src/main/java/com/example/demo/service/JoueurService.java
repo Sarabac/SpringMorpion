@@ -5,6 +5,7 @@ import com.example.demo.repository.JoueurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,4 +25,5 @@ public class JoueurService {
     public Joueur saveJoueur(Joueur joueur){
         return joueurRepository.save(joueur);
     }
+
 }

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Table
 @Setter
@@ -26,4 +28,11 @@ public class Jouer {
     private char symbole;
 
     private String couleur;
+
+    @OneToMany(
+            mappedBy = "jouer",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Marque> marques;
 }
