@@ -23,7 +23,7 @@ public class Jouer {
     @JoinColumn(name = "joueur_id")
     private Joueur joueur;
 
-    private char marque;
+    private char symbole;
 
     private String couleur;
 }
