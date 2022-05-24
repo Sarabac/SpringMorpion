@@ -23,17 +23,17 @@ class JoueurServiceTest {
         Joueur j1 = new Joueur();
         Joueur j2 = new Joueur();
         Joueur j3;
-        j1.setMarque('X');
+        j1.setNom("Jean");
         j1 = joueurService.saveJoueur(j1);
-        assertEquals( 'X', j1.getMarque());
-        j1.setMarque('P');
-        assertEquals( 'P', j1.getMarque());
+        assertEquals( "Jean", j1.getNom());
+        j1.setNom("Paula");
+        assertEquals( "Paula", j1.getNom());
         joueurService.saveJoueur(j1);
 
         j2 = joueurService.saveJoueur(j2);
         assertTrue(j2.getId()>j1.getId());
 
         j3 = joueurService.getJoueurById(1).get();
-        assertEquals( 'P', j3.getMarque());
+        assertEquals( "Paula", j3.getNom());
     }
 }

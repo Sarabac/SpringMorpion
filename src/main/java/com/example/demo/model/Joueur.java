@@ -19,8 +19,4 @@ public class Joueur {
     private String nom;
 
     private String pwd;
-
-    private char marque;
-
-    private String couleur;
 }
