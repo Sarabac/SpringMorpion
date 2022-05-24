@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.sql.Timestamp;
 
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
 @Table
 @Setter
 @Getter
+@ToString
 public class Marque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
