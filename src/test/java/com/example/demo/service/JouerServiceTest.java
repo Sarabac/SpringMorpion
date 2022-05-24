@@ -6,11 +6,14 @@ import com.example.demo.model.Partie;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
+@Sql(scripts = "/serviceDataTest.sql")
 class JouerServiceTest {
 
     @Autowired
@@ -25,7 +28,6 @@ class JouerServiceTest {
     }
 
     @Test
-    @Transactional
     void relationsJouerTest(){
         Joueur j1 = new Joueur();
         Joueur j2 = new Joueur();
@@ -56,8 +58,10 @@ class JouerServiceTest {
 
         System.out.println(jeu1);
         System.out.println(jeu2);
-
-
+    }
+    @Test
+    void getJoueursTest(){
+        joueurService.getJoueurs().forEach(System.out::println);
     }
 
 }

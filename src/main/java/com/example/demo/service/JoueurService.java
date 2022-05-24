@@ -17,6 +17,10 @@ public class JoueurService {
         return joueurRepository.findById(id);
     }
 
+    public Iterable<Joueur> getJoueurs(){
+        return joueurRepository.findAll();
+    }
+
     public Joueur saveJoueur(Joueur joueur){
         return joueurRepository.save(joueur);
     }
