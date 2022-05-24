@@ -7,18 +7,21 @@ import lombok.ToString;
 
 @Entity
 @Table
-@Getter
 @Setter
+@Getter
 @ToString
-public class Joueur {
-
+public class Jouer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String nom;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "partie_id")
+    private Partie partie;
 
-    private String pwd;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "joueur_id")
+    private Joueur joueur;
 
     private char marque;
 

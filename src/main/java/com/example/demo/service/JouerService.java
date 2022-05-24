@@ -1,0 +1,22 @@
+package com.example.demo.service;
+
+import com.example.demo.model.Jouer;
+import com.example.demo.repository.JouerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class JouerService {
+    @Autowired
+    private JouerRepository jouerRepository;
+
+    public Optional<Jouer> getJouerById(int id){
+        return jouerRepository.findById(id);
+    }
+
+    public Jouer saveJouer(Jouer jouer){
+        return jouerRepository.save(jouer);
+    }
+}
