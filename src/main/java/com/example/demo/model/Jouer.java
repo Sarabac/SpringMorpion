@@ -28,11 +28,13 @@ public class Jouer {
     private char symbole;
 
     private String couleur;
-
+/*
     @OneToMany(
             mappedBy = "jouer",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     private List<Marque> marques;
+
+ */
 }
