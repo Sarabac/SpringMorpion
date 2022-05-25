@@ -72,6 +72,10 @@ class CaseRepositoryTest {
         m1.setX(1);
         m1.setY(1);
         marqueRepository.save(m1);
+        m1.setJouer(t2);
+        m1.setX(2);
+        m1.setY(0);
+        marqueRepository.save(m1);
 
         System.out.println("ID depuis marque: "+
                 m1.getJouer().getJoueur().getId());
