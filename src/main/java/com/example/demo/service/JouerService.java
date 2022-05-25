@@ -23,4 +23,8 @@ public class JouerService {
     public Iterable<Jouer> getJouers(){
         return jouerRepository.findAll();
     }
+
+    public Integer[] getDim(int id){
+        return new Integer[]{4,5};
+    }
 }
