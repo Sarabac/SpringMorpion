@@ -1,10 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Web Application</title>
+</head>
 <body>
-
-<p>
-    ca fonctionne !!
-</p>
+<h2 class="h2">Liste des employées</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="nb: ${nombre}">
+        <td><span th:text="${nb}"> Prénom </span></td>
+        <td><span th:text="${nb}"> Nom </span></td>
+    </tr>
+    </tbody>
+</table>
 </body>
-
 </html>
