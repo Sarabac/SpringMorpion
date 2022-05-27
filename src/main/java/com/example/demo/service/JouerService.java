@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Jouer;
+import com.example.demo.model.Partie;
 import com.example.demo.repository.JouerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,15 @@ public class JouerService {
     }
 
     public Integer[] getDim(int id){
-        return new Integer[]{4,5};
+        Integer[] retour = new Integer[]{null, null};
+        Optional<Jouer> optJouer = jouerRepository.findById(id);
+        if(optJouer.isPresent()){
+            Jouer jouer = optJouer.get();
+            Partie partie = jouer.getPartie();
+            if(partie != null){
+                retour = new Integer[]{partie.getNbx(), partie.getNby()};
+            }
+        }
+        return retour;
     }
 }

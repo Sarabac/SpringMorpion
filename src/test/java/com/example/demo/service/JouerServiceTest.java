@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,6 +29,38 @@ class JouerServiceTest {
 
     @Test
     void contextLoads() {
+    }
+
+    @Test
+    void dimmentiontest(){
+        Integer[] attendu = new Integer[]{4,6};
+        Integer[] optenu;
+        Partie p1 = new Partie();
+        Partie p3 = new Partie();
+        p1.setNbx(attendu[0]);
+        p1.setNby(attendu[1]);
+        p1 = partieService.savePartie(p1);
+
+        Jouer t1 = new Jouer();
+        t1.setPartie(p1);
+        t1 = jouerService.saveJouer(t1);
+
+        Jouer t2 = new Jouer();
+        t2 = jouerService.saveJouer(t2);
+
+        Jouer t3 = new Jouer();
+        t3.setPartie(p3);
+        t2 = jouerService.saveJouer(t2);
+
+        optenu = jouerService.getDim(t1.getId());
+        assertArrayEquals(attendu, optenu);
+
+        optenu = jouerService.getDim(t2.getId());
+        assertArrayEquals(new Integer[]{null, null}, optenu);
+
+        optenu = jouerService.getDim(t3.getId());
+        assertArrayEquals(new Integer[]{null, null}, optenu);
+
     }
 
     @Test
