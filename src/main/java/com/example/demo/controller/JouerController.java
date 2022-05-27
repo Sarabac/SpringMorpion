@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/jouer-api")
+@RequestMapping("/api/jouer")
 public class JouerController {
     @Autowired
     private JouerService jouerService;

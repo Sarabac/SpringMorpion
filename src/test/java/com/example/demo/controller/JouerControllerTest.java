@@ -27,7 +27,7 @@ class JouerControllerTest {
 
     @Test
     void dimtest()throws Exception{
-        mockMvc.perform(get("/jouer-api/4/dim"))
+        mockMvc.perform(get("/api/jouer/4/dim"))
                 .andExpect(status().isOk());
               //  .andExpect(jsonPath("$[0]", is(5)));
 
