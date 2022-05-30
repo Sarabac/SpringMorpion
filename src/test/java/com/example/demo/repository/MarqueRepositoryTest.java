@@ -1,6 +1,5 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Case;
 import com.example.demo.model.Jouer;
 import com.example.demo.model.Marque;
 import com.example.demo.model.Partie;
@@ -10,10 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Transactional
 @Sql(scripts = "/serviceDataTest.sql")
-class JouerRepositoryTest {
+class MarqueRepositoryTest {
 
     @Autowired
     private PartieRepository partieRepository;
@@ -24,7 +25,7 @@ class JouerRepositoryTest {
     private MarqueRepository marqueRepository;
 
     @Test
-    void arraytest(){
+    public void verifiePositionUniquesPartPartie(){
         Partie p1 = new Partie();
         Partie p2 = new Partie();
         p1.setNby(4);
@@ -35,17 +36,41 @@ class JouerRepositoryTest {
         t1.setPartie(p1);
         t1 = jouerRepository.save(t1);
 
+        Jouer t2 = new Jouer();
+        t2.setPartie(p1);
+        t2 = jouerRepository.save(t2);
+
         Marque m1 = new Marque();
         m1.setY(1);
         m1.setX(2);
         m1.setJouer(t1);
         m1 = marqueRepository.save(m1);
 
-        Iterable<Case> c1 = jouerRepository.findCaseByPartieId(p1.getId());
+        Marque m2 = new Marque();
+        m2.setY(1);
+        m2.setX(3);
+        m2.setJouer(t1);
+        m2 = marqueRepository.save(m2);
 
-        c1.forEach(case2 -> {System.out.println(case2.getX());});
+        int count = marqueRepository.nbMarqueSamePositionByJouerId(
+                m1.getJouer().getId(),
+                m1.getX(),
+                m1.getY()
+        );
+        assertEquals(1, count);
 
+        Marque m3 = new Marque();
+        m3.setY(1);
+        m3.setX(2);
+        m3.setJouer(t2);
+        m3 = marqueRepository.save(m3);
 
+        count = marqueRepository.nbMarqueSamePositionByJouerId(
+                m1.getJouer().getId(),
+                m1.getX(),
+                m1.getY()
+        );
+        assertEquals(2, count);
     }
 
 }

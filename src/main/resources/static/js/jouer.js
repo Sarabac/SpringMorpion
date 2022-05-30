@@ -1,6 +1,6 @@
 
-terrain = new Vue({
-  el: "#terrain",
+terrain1 = new Vue({
+  el: "#terrain1",
   data: function(){
     return{
       dims: []
@@ -24,7 +24,12 @@ terrain = new Vue({
 
 Vue.component("Case", {
   props:["x", "y"],
-  template: "<div><a>{{x}}:{{y}}</a></div>"
+  data: function(){
+    return {
+      marque: ""
+    }
+  },
+  template: "<a>{{x}}:{{y}}</a>"
 })
 
 

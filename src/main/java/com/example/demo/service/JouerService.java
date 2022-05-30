@@ -37,4 +37,7 @@ public class JouerService {
         }
         return retour;
     }
+    public void cliquer(int jouerId, int x, int y){
+
+    }
 }
