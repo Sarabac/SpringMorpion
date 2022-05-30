@@ -18,7 +18,7 @@ public class JouerVue {
         System.out.println(id);
         return "terrain";
     }
-    
+
     @GetMapping("/")
     public String testAxios(){
         return "jouer";
