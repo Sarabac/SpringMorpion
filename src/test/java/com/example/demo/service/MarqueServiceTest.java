@@ -46,5 +46,7 @@ class MarqueServiceTest {
 
         System.out.println(m1);
         assertTrue(m1.getId() != 0);
+
+        marqueService.save(jeu.getId(), 6, 6);
     }
 }

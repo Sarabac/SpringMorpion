@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Jouer;
 import com.example.demo.model.Marque;
+import com.example.demo.model.Partie;
 import com.example.demo.repository.MarqueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,12 +40,16 @@ public class MarqueService {
     }
 
     public Optional<Marque> save(int jouer_id, int x, int y ){
+        Marque marque = new Marque();
+        marque.setX(x);
+        marque.setY(y);
+        return this.save(marque, jouer_id);
+    }
+
+    public  Optional<Marque> save(Marque marque, int jouer_id) {
         Optional<Jouer> optJouer = jouerService.getJouerById(jouer_id);
         if(optJouer.isPresent()) {
-            Marque marque = new Marque();
             Jouer jouer = optJouer.get();
-            marque.setX(x);
-            marque.setY(y);
             marque.setJouer(jouer);
             return this.save(marque);
         }else{
@@ -52,7 +57,10 @@ public class MarqueService {
         }
     }
     public  Optional<Marque> save(Marque marque){
-        if (this.sansDoublon(marque)){
+        Partie partie = marque.getJouer().getPartie();
+        Boolean infX = marque.getX() < partie.getNbx();
+        Boolean infY = marque.getY() < partie.getNby();
+        if (infX && infY && this.sansDoublon(marque)){
             marque.setCreation(Timestamp.valueOf(LocalDateTime.now()));
             marque = marqueRepository.save(marque);
             return Optional.of(marque);
