@@ -1,40 +1,49 @@
-new Vue({
-  el: '#app',
-  data () {
-    return {
-      info: null
+
+terrain = new Vue({
+  el: "#terrain",
+  data: function(){
+    return{
+      dims: []
     }
   },
-  mounted () {
-    axios
-      .get('http://localhost:8080/api/jouer/4/dim')
-      .then(response => (this.info = response))
+  created(){
+    axios.get('http://localhost:8080/api/jouer/4/dim')
+      .then(response => (this.dims = response.data))
+  },
+  computed: {
+    nbX: function(){
+      return this.dims[0]
+    },
+    nbY: function(){
+      return this.dims[1]
+    }
+
   }
 })
 
-var app2 = new Vue({
-    el: '#app-2',
-    data: {
-      message: 'Vous avez affiché cette page le ' + new Date().toLocaleString()
+
+Vue.component("Case", {
+  props:["x", "y"],
+  template: "<div><a>{{x}}:{{y}}</a></div>"
+})
+
+
+
+app1 = new Vue({
+  el: '#app',
+  data: {
+    dim: [],
+    intevalle: undefined
+  },
+  created() {
+    this.getDims
+    this.intevalle = setInterval(this.getDims, 1000)
+  },
+  methods: {
+    getDims: function(){
+      axios
+        .get('http://localhost:8080/api/jouer/4/dim')
+        .then(response => (this.dim = response.data))
     }
-  })
-
-  var app4 = new Vue({
-    el: '#app-4',
-    data: {
-      todos: [
-        { text: 'Apprendre JavaScript' },
-        { text: 'Apprendre Vue' },
-        { text: 'Créer quelque chose de génial' }
-      ]
-    }
-  })
-
-
-  Vue.component("testage-p", {
-      template: "<p>template test</p>"
-  })
-
-  var test1 = new Vue({
-      el: "#test1"
-  })
+  }
+})
