@@ -24,4 +24,8 @@ public class PartieService {
     public Partie savePartie(Partie partie){
         return partieRepository.save(partie);
     }
+
+    public Integer[] getDim(Partie partie){
+        return new Integer[]{partie.getNbx(), partie.getNby()};
+    }
 }

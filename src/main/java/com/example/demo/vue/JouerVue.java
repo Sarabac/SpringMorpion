@@ -16,11 +16,7 @@ public class JouerVue {
     @GetMapping("/{id}")
     public String terrain(@PathVariable("id") final int id){
         System.out.println(id);
-        return "terrain";
-    }
-
-    @GetMapping("/")
-    public String testAxios(){
         return "jouer";
     }
+
 }

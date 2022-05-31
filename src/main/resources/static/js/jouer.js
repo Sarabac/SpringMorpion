@@ -7,7 +7,7 @@ terrain1 = new Vue({
     }
   },
   created(){
-    axios.get('http://localhost:8080/api/jouer/4/dim')
+    axios.get('dim')
       .then(response => (this.dims = response.data))
   },
   computed: {
@@ -38,7 +38,7 @@ Vue.component("Case", {
         x: this.x,
         y: this.y
       }
-      reponse = axios.post("/marque", chargement)
+      reponse = axios.post("marque", chargement)
       console.log(reponse.data)
     }
   },
@@ -56,7 +56,7 @@ terrain2 = new Vue({
     }
   },
   created(){
-    axios.get('/4/dim')
+    axios.get('dim')
       .then(response => (this.dims = response.data))
   },
   computed: {
@@ -70,22 +70,3 @@ terrain2 = new Vue({
   }
 })
 
-
-app1 = new Vue({
-  el: '#app',
-  data: {
-    dim: [],
-    intevalle: undefined
-  },
-  created() {
-    this.getDims
-    this.intevalle = setInterval(this.getDims, 1000)
-  },
-  methods: {
-    getDims: function(){
-      axios
-        .get('http://localhost:8080/api/jouer/4/dim')
-        .then(response => (this.dim = response.data))
-    }
-  }
-})
