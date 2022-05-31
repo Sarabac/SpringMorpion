@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @Transactional
-@Sql(scripts = "/serviceDataTest.sql")
 class JouerRepositoryTest {
 
     @Autowired
@@ -44,8 +43,7 @@ class JouerRepositoryTest {
         Iterable<Case> c1 = jouerRepository.findCaseByPartieId(p1.getId());
 
         c1.forEach(case2 -> {System.out.println(case2.getX());});
-
-
     }
+
 
 }

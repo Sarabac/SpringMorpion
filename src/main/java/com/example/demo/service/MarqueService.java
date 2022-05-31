@@ -60,7 +60,8 @@ public class MarqueService {
         Partie partie = marque.getJouer().getPartie();
         Boolean infX = marque.getX() < partie.getNbx();
         Boolean infY = marque.getY() < partie.getNby();
-        if (infX && infY && this.sansDoublon(marque)){
+        Boolean peutJouer = jouerService.peutJouer(marque.getJouer().getId());
+        if (infX && infY && this.sansDoublon(marque) && peutJouer){
             marque.setCreation(Timestamp.valueOf(LocalDateTime.now()));
             marque = marqueRepository.save(marque);
             return Optional.of(marque);

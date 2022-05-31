@@ -4,6 +4,7 @@ import com.example.demo.model.Case;
 import com.example.demo.model.Jouer;
 import com.example.demo.model.Partie;
 import com.example.demo.repository.JouerRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +57,23 @@ public class JouerService {
             }
         }
         return retour;
+    }
+
+    public boolean peutJouer(int jouer_id){
+        boolean retour = false;
+        Optional<Jouer> optionalJouer = jouerRepository.findById(jouer_id);
+        if(optionalJouer.isPresent()){
+            Partie partie = optionalJouer.get().getPartie();
+            optionalJouer = jouerRepository.findNextJouerByPartieId(partie.getId());
+            if(optionalJouer.isPresent()){
+                int resultId = optionalJouer.get().getId();
+                if (resultId == jouer_id){
+                    retour = true;
+                }
+            }
+        }
+        return retour;
+
     }
 
 }
