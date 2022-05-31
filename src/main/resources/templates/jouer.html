@@ -1,7 +1,11 @@
 <html>
+  <head>
+    <link rel="stylesheet" th:href="@{/css/jouer.css}">
+  </head>
   <body>
 
-    <table id = "terrain1">
+
+    <table id = "terrain">
     <tr v-for="(e, ligne) in nbY">
       <td v-for="(f, colonne) in nbX">
         <Case v-bind:x="colonne" v-bind:y="ligne">

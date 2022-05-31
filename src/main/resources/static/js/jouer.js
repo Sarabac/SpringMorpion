@@ -1,6 +1,6 @@
 
 terrain1 = new Vue({
-  el: "#terrain1",
+  el: "#terrain",
   data: function(){
     return{
       dims: []
@@ -34,6 +34,7 @@ Vue.component("Case", {
     }
   },
   created(){
+    this.remplir()
     setInterval(this.remplir, 1000)
   },
   methods:{
