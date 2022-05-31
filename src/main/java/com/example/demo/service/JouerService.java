@@ -38,13 +38,12 @@ public class JouerService {
         }
         return retour;
     }
-
     public String[] getCaseValeurs(int jouer_id, int x, int y){
         String[] retour = new String[]{" ", "black"};
         Optional<Jouer> optionalJouer = jouerRepository.findById(jouer_id);
         if(optionalJouer.isPresent()){
             Optional<Case> optionalCase = jouerRepository.findCase(
-                    optionalJouer.get().getPartie().getId(), x, y
+                    optionalJouer.get().getId(), x, y
             );
             if(optionalCase.isPresent()){
                 String Symbole = optionalCase.get().getSymbole();

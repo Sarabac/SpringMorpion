@@ -18,7 +18,8 @@ public interface JouerRepository extends CrudRepository<Jouer, Integer> {
             "where j.partie_id=?1", nativeQuery = true)
     Iterable<Case> findCaseByPartieId(int id);
     @Query(value = "Select m.x AS x, m.y AS y, j.couleur AS couleur, j.symbole AS symbole " +
-            "from marque m inner join jouer j " +
-            "where j.partie_id=?1 AND m.x=?2 AND m.y =?3 LIMIT 1", nativeQuery = true)
-    Optional<Case> findCase(int partie_id, int x, int y);
+            "from marque m inner join jouer j on j.id=m.jouer_id " +
+            "where j.partie_id= (SELECT t.partie_id from Jouer t WHERE t.id=?1) " +
+            "and m.x=?2 and m.y=?3", nativeQuery = true)
+    Optional<Case> findCase(int jouer_id, int x, int y);
 }

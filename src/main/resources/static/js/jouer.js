@@ -55,7 +55,7 @@ Vue.component("Case", {
     }
   },
 
-  template: "<div>{{symbole}}</div>"
+  template: "<div v-bind:style={color:couleur}>{{symbole}}</div>"
 })
 
 
