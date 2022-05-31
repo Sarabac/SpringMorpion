@@ -29,8 +29,12 @@ Vue.component("Case", {
   },
   data: function(){
     return {
-      marque: ""
+      symbole: " ",
+      couleur: "black"
     }
+  },
+  created(){
+    setInterval(this.remplir, 1000)
   },
   methods:{
     cliquer: function(){
@@ -40,33 +44,17 @@ Vue.component("Case", {
       }
       reponse = axios.post("marque", chargement)
       console.log(reponse.data)
-    }
-  },
-
-  template: "<a>{{x}}:{{y}}</a>"
-})
-
-
-terrain2 = new Vue({
-  el: "#terrain2",
-  data: function(){
-    return{
-      dims: [],
-      grille: [{}]
-    }
-  },
-  created(){
-    axios.get('dim')
-      .then(response => (this.dims = response.data))
-  },
-  computed: {
-    nbX: function(){
-      return this.dims[0]
     },
-    nbY: function(){
-      return this.dims[1]
+    remplir: function(){
+      axios.get("case/" + this.x + "/" + this.y)
+        .then(response => {
+          this.symbole = response.data[0]
+          this.couleur = response.data[1]
+        })
     }
+  },
 
-  }
+  template: "<div>{{symbole}}</div>"
 })
+
 

@@ -40,5 +40,10 @@ public class JouerController {
         return optMarque.orElseGet(Marque::new);
     }
 
+    @GetMapping("/{id}/case/{x}/{y}")
+    public String[] getCase(@PathVariable("id") int id, @PathVariable("x") int x, @PathVariable("y") int y){
+        return jouerService.getCaseValeurs(id, x, y);
+    }
+
 
 }

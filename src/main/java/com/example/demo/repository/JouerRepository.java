@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface JouerRepository extends CrudRepository<Jouer, Integer> {
     Partie findPartieByPartieId(int id);
@@ -15,4 +17,8 @@ public interface JouerRepository extends CrudRepository<Jouer, Integer> {
             "from marque m inner join jouer j on j.id=m.jouer_id " +
             "where j.partie_id=?1", nativeQuery = true)
     Iterable<Case> findCaseByPartieId(int id);
+    @Query(value = "Select m.x AS x, m.y AS y, j.couleur AS couleur, j.symbole AS symbole " +
+            "from marque m inner join jouer j " +
+            "where j.partie_id=?1 AND m.x=?2 AND m.y =?3 LIMIT 1", nativeQuery = true)
+    Optional<Case> findCase(int partie_id, int x, int y);
 }
