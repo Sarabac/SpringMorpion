@@ -22,7 +22,7 @@ terrain1 = new Vue({
 })
 
 
-Vue.component("Case", {
+Vue.component("case", {
   props:{
     x: Number,
     y: Number
@@ -55,7 +55,7 @@ Vue.component("Case", {
     }
   },
 
-  template: "<div v-bind:style={color:couleur}>{{symbole}}</div>"
+  template: "<td v-bind:style={color:couleur}><p>{{symbole}}</p></td>"
 })
 
 
