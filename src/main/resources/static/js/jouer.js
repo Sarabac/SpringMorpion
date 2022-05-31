@@ -1,7 +1,6 @@
+const { createApp } = Vue
 
-
-terrain1 = new Vue({
-  el: "#terrain",
+terrain = createApp({
   data: function(){
     return{
       dims: []
@@ -22,8 +21,7 @@ terrain1 = new Vue({
   }
 })
 
-
-Vue.component("case", {
+terrain.component("case", {
   props:{
     x: Number,
     y: Number
@@ -45,7 +43,8 @@ Vue.component("case", {
         y: this.y
       }
       reponse = axios.post("marque", chargement)
-      console.log(reponse.data)
+      this.remplir()
+      
     },
     remplir: function(){
       axios.get("case/" + this.x + "/" + this.y)
@@ -56,7 +55,7 @@ Vue.component("case", {
     }
   },
 
-  template: "<td v-bind:style={color:couleur}><p>{{symbole}}</p></td>"
+  template: "<td v-bind:style={color:couleur} @click = 'cliquer'>{{symbole}}</td>"
 })
 
-
+terrain.mount("#terrain")

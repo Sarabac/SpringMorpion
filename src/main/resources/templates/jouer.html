@@ -8,9 +8,7 @@
 
     <table id = "terrain">
     <tr v-for="(e, ligne) in nbY">
-      <td v-for="(f, colonne) in nbX">
-        <Case v-bind:x="colonne" v-bind:y="ligne">
-        </Case>
+      <td v-for="(f, colonne) in nbX" is="vue:case" v-bind:x="colonne" v-bind:y="ligne">
       </td>
     </tr>
 
@@ -19,7 +17,8 @@
     </table>
 
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- <script src="../static/jouer.js"></script>-->
   <script type="text/javascript" th:src="@{/js/jouer.js}"></script>

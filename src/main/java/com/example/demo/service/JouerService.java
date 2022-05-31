@@ -6,6 +6,7 @@ import com.example.demo.model.Partie;
 import com.example.demo.repository.JouerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,6 +57,5 @@ public class JouerService {
         }
         return retour;
     }
-    public void cliquer(int jouerId, int x, int y){
-    }
+
 }

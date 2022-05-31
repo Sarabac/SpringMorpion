@@ -28,6 +28,9 @@ public class Jouer {
     private char symbole;
 
     private String couleur;
+
+    @Column(columnDefinition = "float default rand()")
+    private float ordre;
 /*
     @OneToMany(
             mappedBy = "jouer",

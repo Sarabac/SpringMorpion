@@ -35,9 +35,9 @@ public class JouerController {
     }
 
     @PostMapping("/{id}/marque")
-    public Marque saveMarque(@RequestBody Marque marque, @PathVariable("id") int id){
+    public Boolean saveMarque(@RequestBody Marque marque, @PathVariable("id") int id){
         Optional<Marque> optMarque = marqueService.save(marque, id);
-        return optMarque.orElseGet(Marque::new);
+        return optMarque.isPresent();
     }
 
     @GetMapping("/{id}/case/{x}/{y}")
