@@ -43,7 +43,8 @@ terrain.component("case", {
         y: this.y
       }
       reponse = axios.post("marque", chargement)
-      this.remplir()
+        .then(reponse =>this.remplir())
+      
       
     },
     remplir: function(){
